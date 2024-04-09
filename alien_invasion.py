@@ -1,6 +1,7 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 class AlienInvesion:
     """Over all class to manage game assets and behavior."""
@@ -14,6 +15,7 @@ class AlienInvesion:
 
         self.settings = Settings()
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
+        self.ship = Ship(self)
 
 
     def run_game(self):
@@ -27,6 +29,7 @@ class AlienInvesion:
                     sys.exit()
 
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
             pygame.display.flip()
             self.clock.tick(60)
 
